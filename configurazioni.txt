@@ -1,0 +1,29 @@
+kali/kali
+
+msfadmin/msfadmin
+
+tastiera italiana kali
+
+/etc/X11/xorg.conf.d/10-evdev.conf
+
+Section "InputClass"
+Identifier "evdev keyboard catchall"
+MatchIsKeyboard "on"
+MatchDevicePath "/dev/input/event*"
+Driver "evdev"
+Option "XkbLayout" "it"
+EndSection
+
+tastiera italiana in metasploitable
+
+sudo loadkeys it        ogni volta però
+
+per sempre
+
+sudo nano /etc/rc.local
+
+loadkeys it
+exit 0
+
+sudo chmod +x /etc/rc.local
+
