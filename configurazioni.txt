@@ -22,6 +22,7 @@ per sempre
 
 sudo nano /etc/rc.local
 
+# il file deve terminare così
 loadkeys it
 exit 0
 
