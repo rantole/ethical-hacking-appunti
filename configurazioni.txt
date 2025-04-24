@@ -26,4 +26,3 @@ loadkeys it
 exit 0
 
 sudo chmod +x /etc/rc.local
-
